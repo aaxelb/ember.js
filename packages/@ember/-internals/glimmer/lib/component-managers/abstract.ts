@@ -1,4 +1,4 @@
-import { ComponentCapabilities, Simple } from '@glimmer/interfaces';
+import { ComponentCapabilities } from '@glimmer/interfaces';
 import { Tag, VersionedPathReference } from '@glimmer/reference';
 import {
   Arguments,
@@ -10,6 +10,7 @@ import {
   PreparedArguments,
 } from '@glimmer/runtime';
 import { Destroyable, Option } from '@glimmer/util';
+import { SimpleElement } from '@simple-dom/interface';
 import { DebugStack } from '../utils/debug-stack';
 
 // implements the ComponentManager interface as defined in glimmer:
@@ -39,7 +40,7 @@ export default abstract class AbstractManager<T, U> implements ComponentManager<
   abstract getSelf(component: T): VersionedPathReference<unknown>;
   abstract getCapabilities(state: U): ComponentCapabilities;
 
-  didCreateElement(_component: T, _element: Simple.Element, _operations: ElementOperations): void {
+  didCreateElement(_component: T, _element: SimpleElement, _operations: ElementOperations): void {
     // noop
   }
 

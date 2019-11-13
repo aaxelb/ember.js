@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
-import { Simple } from '@glimmer/interfaces';
 import { Bounds, CapturedArguments } from '@glimmer/runtime';
 import { expect, Option, Stack } from '@glimmer/util';
+import { SimpleElement, SimpleNode } from '@simple-dom/interface';
 
 export type RenderNodeType = 'outlet' | 'engine' | 'route-template' | 'component';
 
@@ -24,9 +24,9 @@ export interface CapturedRenderNode {
   args: ReturnType<CapturedArguments['value']>;
   instance: unknown;
   bounds: Option<{
-    parentElement: Simple.Element;
-    firstNode: Simple.Node;
-    lastNode: Simple.Node;
+    parentElement: SimpleElement;
+    firstNode: SimpleNode;
+    lastNode: SimpleNode;
   }>;
   children: CapturedRenderNode[];
 }

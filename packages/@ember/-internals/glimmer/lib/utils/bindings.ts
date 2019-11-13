@@ -2,10 +2,11 @@ import { get } from '@ember/-internals/metal';
 import { assert, deprecate } from '@ember/debug';
 import { EMBER_COMPONENT_IS_VISIBLE } from '@ember/deprecated-features';
 import { dasherize } from '@ember/string';
-import { Option, Simple } from '@glimmer/interfaces';
+import { Option } from '@glimmer/interfaces';
 import { CachedReference, combine, map, Reference, Tag } from '@glimmer/reference';
 import { ElementOperations, PrimitiveReference } from '@glimmer/runtime';
 import { Core, Ops } from '@glimmer/wire-format';
+import { SimpleElement } from '@simple-dom/interface';
 import { ROOT_REF } from '../component';
 import { Component } from './curly-component-state-bucket';
 import { referenceFromParts } from './references';
@@ -79,7 +80,7 @@ export const AttributeBinding = {
   },
 
   install(
-    _element: Simple.Element,
+    _element: SimpleElement,
     component: Component,
     parsed: [string, string, boolean],
     operations: ElementOperations
@@ -179,13 +180,13 @@ if (EMBER_COMPONENT_IS_VISIBLE) {
 export let IsVisibleBinding:
   | undefined
   | {
-      install(element: Simple.Element, component: Component, operations: ElementOperations): void;
+      install(element: SimpleElement, component: Component, operations: ElementOperations): void;
       mapStyleValue(isVisible: boolean, component: Component): SafeString | null;
     };
 
 if (EMBER_COMPONENT_IS_VISIBLE) {
   IsVisibleBinding = {
-    install(_element: Simple.Element, component: Component, operations: ElementOperations) {
+    install(_element: SimpleElement, component: Component, operations: ElementOperations) {
       let componentMapStyleValue = (isVisible: boolean) => {
         return this.mapStyleValue(isVisible, component);
       };
@@ -218,7 +219,7 @@ if (EMBER_COMPONENT_IS_VISIBLE) {
 
 export const ClassNameBinding = {
   install(
-    _element: Simple.Element,
+    _element: SimpleElement,
     component: Component,
     microsyntax: string,
     operations: ElementOperations

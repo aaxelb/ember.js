@@ -6,7 +6,7 @@ import EngineInstance from '@ember/engine/instance';
 import { _instrumentStart } from '@ember/instrumentation';
 import { assign } from '@ember/polyfills';
 import { DEBUG } from '@glimmer/env';
-import { ComponentCapabilities, Option, Simple } from '@glimmer/interfaces';
+import { ComponentCapabilities, Option } from '@glimmer/interfaces';
 import { CONSTANT_TAG, createTag, Tag, VersionedPathReference } from '@glimmer/reference';
 import {
   Arguments,
@@ -19,6 +19,7 @@ import {
   WithStaticLayout,
 } from '@glimmer/runtime';
 import { Destroyable } from '@glimmer/util';
+import { SimpleElement } from '@simple-dom/interface';
 import Environment from '../environment';
 import { DynamicScope } from '../renderer';
 import RuntimeResolver from '../resolver';
@@ -261,7 +262,7 @@ export function createRootOutlet(outletView: OutletView): OutletComponentDefinit
 
       didCreateElement(
         component: OutletInstanceState,
-        element: Simple.Element,
+        element: SimpleElement,
         _operations: ElementOperations
       ): void {
         // to add GUID id and class
