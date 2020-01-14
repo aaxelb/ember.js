@@ -265,12 +265,7 @@ export default class RouterService extends Service {
     let hasQueryParams = Object.keys(queryParams).length > 0;
 
     if (hasQueryParams) {
-      this._router._prepareQueryParams(
-        routeName,
-        models,
-        queryParams,
-        true /* fromRouterService */
-      );
+      this._router._prepareQueryParams(routeName, models, queryParams);
       return shallowEqual(queryParams, routerMicrolib.state!.queryParams);
     }
 

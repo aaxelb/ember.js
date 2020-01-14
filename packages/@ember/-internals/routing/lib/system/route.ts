@@ -2582,7 +2582,7 @@ Route.reopen(ActionHandler, Evented, {
         qp.serializedValue = svalue;
 
         let thisQueryParamHasDefaultValue = qp.serializedDefaultValue === svalue;
-        if (!thisQueryParamHasDefaultValue || (transition as any)._keepDefaultQueryParamValues) {
+        if (!thisQueryParamHasDefaultValue) {
           finalParams.push({
             value: svalue,
             visible: true,
